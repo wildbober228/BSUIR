@@ -1,5 +1,7 @@
 package utils;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class UserInput {
@@ -22,5 +24,12 @@ public class UserInput {
     public Float inputFloat(){
         Float result = in.nextFloat();
         return  result;
+    }
+
+    public Date inputData() throws ParseException {
+        String result = in.next();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = simpleDateFormat.parse(result);
+        return date;
     }
 }

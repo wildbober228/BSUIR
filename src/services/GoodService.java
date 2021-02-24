@@ -1,7 +1,10 @@
 package services;
 
 import dao.GoodDao;
+import models.Customer;
 import models.Good;
+
+import java.util.List;
 
 public class GoodService {
 
@@ -24,5 +27,9 @@ public class GoodService {
 
     public void updateGood(Good good) {
         goodDao.update(good);
+    }
+
+    public List<Good> findAllGoods() {
+        return goodDao.findAll();
     }
 }

@@ -26,12 +26,11 @@ public class CustomerInput {
 
     private static Discount addDiscount(int amountDiscount){
          Discount discount = new Discount(amountDiscount);
-
          discountService.saveDiscount(discount);
          return discount;
     }
 
-    public static void showCustomer(){
+    public static void showCustomers(){
         System.out.println(customerService.findAllCustomers().toString());
     }
 
@@ -39,8 +38,6 @@ public class CustomerInput {
         System.out.println("Input id customer to delete");
         int id = userInput.inputInt();
         customer = customerService.findCustomer(id);
-        //discount = discountService.findDiscount(customer.getDiscount().getId());
-        //discountService.deleteDiscount(discount);
         customerService.deleteCustomer(customer);
     }
 
@@ -61,11 +58,11 @@ public class CustomerInput {
             int _case = userInput.inputInt();
             while (true) {
                 switch (_case) {
+
                     case 1:
                         System.out.println("input amount of Discount");
                         int amountDiscount = userInput.inputInt();
                         discount = addDiscount(amountDiscount);
-
                         break;
 
                     case 2:
@@ -99,7 +96,7 @@ public class CustomerInput {
             String name;
             String surName;
 
-            showCustomer();
+            showCustomers();
 
             System.out.println("Input id customer to update");
             int id = userInput.inputInt();

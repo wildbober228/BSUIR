@@ -1,8 +1,11 @@
 package services;
 
 import dao.OrderDao;
+import models.Good;
 import models.Order;
 import org.hibernate.Session;
+
+import java.util.List;
 
 public class OrderService {
 
@@ -26,6 +29,10 @@ public class OrderService {
 
     public static void updateOrder(Order order) {
         orderDao.update(order);
+    }
+
+    public List<Order> findAllOrders() {
+        return orderDao.findAll();
     }
 
 }

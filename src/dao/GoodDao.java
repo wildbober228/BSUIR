@@ -1,9 +1,13 @@
 package dao;
 
+import models.Customer;
 import models.Good;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GoodDao {
@@ -34,6 +38,16 @@ public class GoodDao {
         session.delete(good);
         tx1.commit();
         session.close();
+    }
+
+    public List<Good> findAll() {
+        List<Good> goods = new ArrayList<Good>();
+        try{
+            goods = (List<Good>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Good").list();
+        } catch (HibernateException e){
+            System.out.println(e.toString());
+        }
+        return goods;
     }
 
 }
